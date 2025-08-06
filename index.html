@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Akshaya Sakthivel</title>
 
   <!-- Tailwind CSS -->
@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
 
   <style>
     body {
@@ -72,7 +72,6 @@
 
     .highlight-passion {
       font-weight: bold;
-      color: #ef4444;
       font-size: 1.1rem;
       background: linear-gradient(to right, #facc15, #f472b6);
       -webkit-background-clip: text;
@@ -81,24 +80,29 @@
     }
 
     @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
-    .sriram {
+    .bounce-word {
       display: inline-block;
-      color: #10b981;
-      font-weight: bold;
       animation: bounce 1s infinite;
+      font-weight: bold;
+      color: #10b981;
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
+    }
+
+    .rotate {
+      animation: rotate 6s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -112,41 +116,37 @@
 
   <!-- Welcome screen -->
   <div id="welcome">
-    🎵 Welcome! Get ready to party... 💃🕺
+    🎉 Welcome! Let’s learn, dance & code! 🎶
   </div>
 
   <!-- Main content -->
   <main id="content" class="hidden flex justify-center pt-[50px] min-h-screen">
-    <div class="max-w-[580px] px-6 py-20 text-base animate__animated animate__fadeInUp">
+    <div class="max-w-[580px] px-6 py-20 text-base animate__animated animate__fadeInUp animate__slow">
 
-      <h1 class="text-2xl text-neutral-900 font-semibold mb-6 flex items-center gap-2">
-        Hello! 👋 I am Akshaya Sakthivel <span class="text-3xl animate__animated animate__bounceIn">🎉</span>
+      <h1 class="text-2xl text-neutral-900 font-semibold mb-6 flex items-center gap-2 animate__animated animate__lightSpeedInLeft">
+        Hello! 👋 I am Akshaya Sakthivel 
+        <span class="text-3xl animate__animated animate__bounceIn">🎉</span>
       </h1>
 
-      <p class="mb-4">Currently studying 2nd year B.A. English Literature at<br>
-        <a href="https://www.mrgac.ac.in/" class="text-neutral-900 border-b hover:text-neutral-400">
-          M.R. Government Arts College
-        </a>.
-        <span> I want to become a teacher in future. </span>
-        <span class="highlight-passion"> Learning to teach with passion. </span>
+      <p class="mb-4 animate__animated animate__fadeInRight">Currently studying 2nd year B.A. English Literature at
+        <a href="https://www.mrgac.ac.in/" class="text-neutral-900 border-b hover:text-neutral-400"> M.R. Government Arts College</a>.
+        I want to become a teacher in future.
+        <span class="highlight-passion">Learning to teach with passion.</span>
       </p>
 
-      <p class="mb-4">I completed my 10th, 11th, and 12th at Ullikkottai Government Higher Secondary School.</p>
+      <p class="mb-4 animate__animated animate__fadeInLeft">I completed my 10th, 11th, and 12th at Ullikkottai Government Higher Secondary School.</p>
 
-      <p class="mb-4">My father’s name is Sakthivel M and my mother’s name is Kalai Rani. I have one elder sister,
-        Subiksha S, who is also a B.A. English graduate.</p>
+      <p class="mb-4 animate__animated animate__fadeInRight">My father’s name is Sakthivel M and my mother’s name is Kalai Rani. I have one elder sister, Subiksha S, who is also a B.A. English graduate.</p>
 
-      <p class="mb-4">My hobbies are cooking and painting. During the long vacation, I completed a Beautician course.</p>
+      <p class="mb-4 animate__animated animate__fadeInLeft">My hobbies are cooking and painting. During the long vacation, I completed a Beautician course. ✂️💅</p>
 
-      <p class="mb-4">I love learning new things and expressing my creativity. 😊🎨</p>
+      <p class="mb-4 animate__animated animate__fadeInUp">I love learning new things and expressing my creativity. 😊🎨</p>
 
-      <p class="mb-4 sriram-placeholder"></p>
+      <div class="mt-4 animate__animated animate__fadeInDown animate__slower" id="randomWords"></div>
 
-      <p>Thank you! 🙏</p>
+      <p class="mt-6 animate__animated animate__fadeInUpBig">Thank you! 🙏</p>
 
-      <br />
-
-      <div class="flex items-center space-x-6">
+      <div class="flex items-center space-x-6 mt-6">
         <a href="mailto:akshaya.hanuman66@gmail.com" class="btn btn-outline-info btn-sm">
           📧 Email
         </a>
@@ -155,12 +155,12 @@
         </a>
       </div>
     </div>
+
     <p class="footer-txt">
       <a href="https://akshayasakthivel66.github.io">akshayasakthivel66.github.io </a> © 2025
     </p>
   </main>
 
-  <!-- Scripts -->
   <script>
     // Show content after 3 seconds
     setTimeout(() => {
@@ -169,22 +169,25 @@
 
       // 🎉 Confetti burst
       confetti({
-        particleCount: 150,
-        spread: 80,
+        particleCount: 200,
+        spread: 100,
         origin: { y: 0.6 }
       });
 
-      // 🔁 Randomly insert "Sriram" 3 times
-      const sriramCount = 3;
-      const paraElements = document.querySelectorAll("main p");
-      for (let i = 0; i < sriramCount; i++) {
-        const randomIndex = Math.floor(Math.random() * paraElements.length);
+      // 🎲 Random insert of 20 "Sriram" and 20 "Akshaya"
+      const container = document.getElementById("randomWords");
+      const words = Array(20).fill("Sriram").concat(Array(20).fill("Akshaya"));
+      words.sort(() => Math.random() - 0.5); // shuffle
+
+      words.forEach(word => {
         const span = document.createElement("span");
-        span.textContent = " Sriram ";
-        span.classList.add("sriram");
-        paraElements[randomIndex].appendChild(span);
-      }
+        span.classList.add("bounce-word", "mr-2", "text-sm");
+        span.textContent = word;
+        container.appendChild(span);
+      });
+
     }, 3000);
   </script>
+
 </body>
 </html>
