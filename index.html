@@ -6,6 +6,7 @@
   No content crawling or reuse allowed without permission.
   Please do not misuse or copy the content or code.
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +20,11 @@
   <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-  <!-- Canvas Confetti -->
+  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-  <!-- Google Font: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -33,11 +34,9 @@
 
     .footer-txt {
       position: fixed;
-      bottom: 10px;
-      font-weight: 300;
+      bottom: 0px;
+      font-weight: 100px;
       font-size: 12px;
-      text-align: center;
-      width: 100%;
     }
 
     .footer-txt a {
@@ -49,145 +48,143 @@
       text-decoration: underline;
     }
 
-    #content {
-      display: none;
+    #welcome {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, #ff69b4, #6a5acd);
+      color: white;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      animation: disco 3s infinite;
     }
 
-    .floating {
-      position: absolute;
-      pointer-events: none;
-      opacity: 0.3;
-      font-size: 1.8rem;
-      animation: float 10s infinite ease-in-out;
-      z-index: 0;
-      user-select: none;
+    @keyframes disco {
+      0% { background: #ff1493; }
+      25% { background: #00ffff; }
+      50% { background: #ff8c00; }
+      75% { background: #7fff00; }
+      100% { background: #ff1493; }
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-50px) rotate(15deg); }
-      100% { transform: translateY(0); }
+    .highlight-passion {
+      font-weight: bold;
+      color: #ef4444;
+      font-size: 1.1rem;
+      background: linear-gradient(to right, #facc15, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .sriram {
+      display: inline-block;
+      color: #10b981;
+      font-weight: bold;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
   </style>
 </head>
 
-<body class="bg-white text-neutral-600 selection:bg-green-200 relative">
+<body class="bg-white text-neutral-700">
 
-  <!-- Welcome Banner -->
-  <div id="welcome" class="text-center mt-32 text-4xl font-bold text-neutral-800 animate__animated animate__fadeInDown">
-    👋 Welcome to My Space!
-    <p class="text-lg mt-4 text-neutral-500 animate__animated animate__pulse animate__infinite">Loading fun...</p>
+  <!-- Background music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Scott_Holmes_Music/Upbeat_Party/Scott_Holmes_Music_-_Upbeat_Party.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Welcome screen -->
+  <div id="welcome">
+    🎵 Welcome! Get ready to party... 💃🕺
   </div>
 
-  <!-- Main Content -->
-  <main class="flex justify-center items-center pt-16 px-4 min-h-screen relative">
-    <div id="content" class="max-w-2xl px-6 py-10 animate__animated animate__fadeInUp relative z-10">
-      <h1 class="text-3xl font-semibold text-neutral-900 mb-6 flex items-center gap-2">
-        Hello! 👋<br> I am Akshaya Sakthivel 
-        <span id="celebration" class="hidden animate__animated text-3xl">🎉</span>
+  <!-- Main content -->
+  <main id="content" class="hidden flex justify-center pt-[50px] min-h-screen">
+    <div class="max-w-[580px] px-6 py-20 text-base animate__animated animate__fadeInUp">
+
+      <h1 class="text-2xl text-neutral-900 font-semibold mb-6 flex items-center gap-2">
+        Hello! 👋 I am Akshaya Sakthivel <span class="text-3xl animate__animated animate__bounceIn">🎉</span>
       </h1>
 
-      <p class="mb-4">
-        Currently studying 2nd year B.A. English Literature at
-        <a href="https://www.mrgac.ac.in/" class="text-blue-600 hover:underline">M.R. Government Arts College</a>.
-        <br />I want to become a teacher in future. 
-        <span class="text-neutral-400">Learning to teach with passion.</span>
+      <p class="mb-4">Currently studying 2nd year B.A. English Literature at<br>
+        <a href="https://www.mrgac.ac.in/" class="text-neutral-900 border-b hover:text-neutral-400">
+          M.R. Government Arts College
+        </a>.
+        <span> I want to become a teacher in future. </span>
+        <span class="highlight-passion"> Learning to teach with passion. </span>
       </p>
 
-      <p class="mb-4">
-        I completed my 10th, 11th, and 12th at Ullikkottai Government Higher Secondary School.
-      </p>
+      <p class="mb-4">I completed my 10th, 11th, and 12th at Ullikkottai Government Higher Secondary School.</p>
 
-      <p class="mb-4">
-        My father’s name is Sakthivel M and my mother’s name is Kalai Rani. I have one elder sister, Subiksha S,
-        who is also a B.A. English graduate.
-      </p>
+      <p class="mb-4">My father’s name is Sakthivel M and my mother’s name is Kalai Rani. I have one elder sister,
+        Subiksha S, who is also a B.A. English graduate.</p>
 
-      <p class="mb-4">
-        My hobbies are cooking and painting. During the long vacation, I completed a Beautician course.
-      </p>
+      <p class="mb-4">My hobbies are cooking and painting. During the long vacation, I completed a Beautician course.</p>
 
-      <p class="mb-6">
-        I love learning new things and expressing my creativity.
-      </p>
+      <p class="mb-4">I love learning new things and expressing my creativity. 😊🎨</p>
 
-      <p class="mb-6">Thank you,</p>
+      <p class="mb-4 sriram-placeholder"></p>
 
-      <div class="flex gap-4 flex-wrap">
-        <a href="mailto:akshaya.hanuman66@gmail.com"
-          class="flex items-center gap-2 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-4 py-2 rounded transition duration-300">
+      <p>Thank you! 🙏</p>
+
+      <br />
+
+      <div class="flex items-center space-x-6">
+        <a href="mailto:akshaya.hanuman66@gmail.com" class="btn btn-outline-info btn-sm">
           📧 Email
         </a>
-
-        <a href="https://github.com/akshayasathivel66" target="_blank"
-          class="flex items-center gap-2 border border-neutral-800 text-neutral-800 hover:bg-neutral-800 hover:text-white px-4 py-2 rounded transition duration-300">
-          🐱 GitHub
+        <a class="btn btn-outline-dark btn-sm" target="_blank" href="https://github.com/akshayasathivel66">
+          🐙 Github
         </a>
       </div>
     </div>
+    <p class="footer-txt">
+      <a href="https://akshayasakthivel66.github.io">akshayasakthivel66.github.io </a> © 2025
+    </p>
   </main>
 
-  <!-- Footer -->
-  <p class="footer-txt">
-    <a href="https://akshayasakthivel66.github.io">akshayasakthivel66.github.io</a> © 2025
-  </p>
-
-  <!-- Floating Emojis + Text -->
-  <div id="floating-layer"></div>
-
-  <!-- Script -->
+  <!-- Scripts -->
   <script>
-    const emojis = ["👾", "🌟", "🪩", "💫", "🦄", "🍭"];
-    const word = "Sriram";
-
-    function launchConfetti() {
-      confetti({
-        particleCount: 120,
-        spread: 100,
-        origin: { y: 0.6 }
-      });
-    }
-
-    function spawnFloatingElements() {
-      const layer = document.getElementById("floating-layer");
-
-      // More emojis
-      for (let i = 0; i < 20; i++) {
-        const span = document.createElement("span");
-        span.className = "floating animate__animated animate__fadeIn";
-        span.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-        span.style.top = `${Math.random() * window.innerHeight}px`;
-        span.style.left = `${Math.random() * window.innerWidth}px`;
-        span.style.fontSize = `${12 + Math.random() * 30}px`;
-        span.style.animationDuration = `${4 + Math.random() * 6}s`;
-        layer.appendChild(span);
-      }
-
-      // Few "Sriram" words
-      for (let i = 0; i < 5; i++) {
-        const span = document.createElement("span");
-        span.className = "floating animate__animated animate__fadeIn";
-        span.innerText = word;
-        span.style.top = `${Math.random() * window.innerHeight}px`;
-        span.style.left = `${Math.random() * window.innerWidth}px`;
-        span.style.fontWeight = "bold";
-        span.style.fontSize = `${14 + Math.random() * 20}px`;
-        span.style.color = "rgba(0, 0, 0, 0.05)";
-        span.style.animationDuration = `${5 + Math.random() * 5}s`;
-        layer.appendChild(span);
-      }
-    }
-
-    // Delay to show content
+    // Show content after 3 seconds
     setTimeout(() => {
       document.getElementById("welcome").style.display = "none";
-      document.getElementById("content").style.display = "block";
-      document.getElementById("celebration").classList.remove("hidden");
-      document.getElementById("celebration").classList.add("animate__bounceIn");
-      launchConfetti();
-      spawnFloatingElements();
-    }, 5000);
-  </script>
+      document.getElementById("content").classList.remove("hidden");
 
+      // 🎉 Confetti burst
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+
+      // 🔁 Randomly insert "Sriram" 3 times
+      const sriramCount = 3;
+      const paraElements = document.querySelectorAll("main p");
+      for (let i = 0; i < sriramCount; i++) {
+        const randomIndex = Math.floor(Math.random() * paraElements.length);
+        const span = document.createElement("span");
+        span.textContent = " Sriram ";
+        span.classList.add("sriram");
+        paraElements[randomIndex].appendChild(span);
+      }
+    }, 3000);
+  </script>
 </body>
 </html>
